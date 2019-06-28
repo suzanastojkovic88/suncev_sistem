@@ -1,0 +1,36 @@
+<div ng-controller="satelitiCtrl">
+	<h1>Sateliti</h1>
+	<br> <br>
+	<div class="col-12 col-lg-6">
+		<form>
+			<div class="form-group">
+				<label for="planeta">Izaberite planetu:</label> <select
+					class="form-control" name="planeta"
+					ng-model="trazeniSatelit.planeta">
+					<option ng-repeat="planeta in planete" value="{{planeta.id}}">{{planeta.naziv}}</option>
+				</select>
+			</div>
+			<button type="button" class="btn btn-primary" ng-click="trazi()">Filtriraj</button>
+		</form>
+		<br> <br>
+		<div class="btn-group pull-right">
+			<button class="btn btn-primary" ng-click="nazad()"
+				ng-disabled="pageNum==0">Prethodna</button>
+			<button class="btn btn-primary" ng-click="napred()"
+				ng-disabled="pageNum == totalPages - 1">Sledeća</button>
+		</div>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Naziv</th>
+					<th align=center>Godina otkrića</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="s in sateliti">
+					<td>{{s.naziv}}</td>
+					<td>{{s.godinaOtkrica}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
